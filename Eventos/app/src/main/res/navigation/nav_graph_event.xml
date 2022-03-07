@@ -9,6 +9,18 @@
         android:id="@+id/nav_fragment_events_home"
         android:name="br.com.cabral.eventos.ui.fragment.EventsHomeFragment"
         android:label="fragment_events_home"
-        tools:layout="@layout/fragment_events_home" />
+        tools:layout="@layout/fragment_events_home">
+
+        <action
+            android:id="@+id/action_nav_fragment_events_home_to_nav_fragment_event_detail"
+            app:destination="@id/nav_fragment_event_detail" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_fragment_event_detail"
+        android:name="br.com.cabral.eventos.ui.fragment.EventDetailFragment"
+        android:label="fragment_event_detail"
+        tools:layout="@layout/fragment_event_detail" />
 
 </navigation>

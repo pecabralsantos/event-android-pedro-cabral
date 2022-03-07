@@ -1,16 +1,18 @@
 package br.com.cabral.eventos.ui.adapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import br.com.cabral.eventos.R
 import br.com.cabral.eventos.databinding.ItemCardHomeBinding
 import br.com.cabral.eventos.model.Event
+import br.com.cabral.eventos.ui.fragment.EventDetailFragment.Companion.ID_SELECTED_EVENT
 import br.com.cabral.eventos.ui.util.Formats
 import com.squareup.picasso.Picasso
 
-
-class EventsHomeAdapter() : RecyclerView.Adapter<EventsHomeAdapter.ViewHolder>() {
+class EventsHomeAdapter : RecyclerView.Adapter<EventsHomeAdapter.ViewHolder>() {
 
     private var listEvents = listOf<Event>()
 
@@ -31,6 +33,16 @@ class EventsHomeAdapter() : RecyclerView.Adapter<EventsHomeAdapter.ViewHolder>()
 
         holder.binding.txtEventDate.text = Formats().longToDateSimplified(listEvents[position].date)
         holder.binding.txtEventTitle.text = listEvents[position].title
+
+        holder.binding.cvEvent.setOnClickListener {
+            Bundle().apply {
+                putString(ID_SELECTED_EVENT, listEvents[position].id)
+                it.findNavController().navigate(
+                    R.id.action_nav_fragment_events_home_to_nav_fragment_event_detail,
+                    this
+                )
+            }
+        }
     }
 
     override fun getItemCount(): Int = listEvents.size

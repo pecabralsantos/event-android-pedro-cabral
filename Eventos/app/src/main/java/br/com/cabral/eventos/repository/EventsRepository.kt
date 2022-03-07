@@ -6,6 +6,7 @@ import retrofit2.Response
 
 interface EventsRepository {
     suspend fun getAllEvents(): Response<List<Event>>
+    suspend fun getEvent(id: String): Response<Event>
 }
 
 class EventsRepositoryImpl(
@@ -14,5 +15,8 @@ class EventsRepositoryImpl(
 
     override suspend fun getAllEvents(): Response<List<Event>> =
         eventsApi.networkProvider().getAllEvents()
+
+    override suspend fun getEvent(id: String): Response<Event> =
+        eventsApi.networkProvider().getEvent(id)
 
 }

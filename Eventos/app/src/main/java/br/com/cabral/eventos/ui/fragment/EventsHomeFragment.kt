@@ -15,7 +15,7 @@ import org.koin.android.ext.android.inject
 class EventsHomeFragment : Fragment() {
 
     private lateinit var binding: FragmentEventsHomeBinding
-    private val eventsHomeViewModel: EventsHomeViewModel by inject()
+    private val viewModel: EventsHomeViewModel by inject()
 
     private val adapterEvents: EventsHomeAdapter by lazy { EventsHomeAdapter() }
 
@@ -34,11 +34,11 @@ class EventsHomeFragment : Fragment() {
         setupObservers()
         setupAdapter()
 
-        eventsHomeViewModel.getAllEvents()
+        viewModel.getAllEvents()
     }
 
     private fun setupObservers() {
-        eventsHomeViewModel.listEvents.observe(viewLifecycleOwner) {
+        viewModel.listEvents.observe(viewLifecycleOwner) {
             adapterEvents.update(it)
         }
     }
