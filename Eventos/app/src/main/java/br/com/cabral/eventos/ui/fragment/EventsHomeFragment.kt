@@ -1,20 +1,16 @@
 package br.com.cabral.eventos.ui.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import br.com.cabral.eventos.databinding.FragmentEventsHomeBinding
 import br.com.cabral.eventos.ui.adapter.EventsHomeAdapter
 import br.com.cabral.eventos.ui.viewmodel.EventsHomeViewModel
 import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class EventsHomeFragment : Fragment() {
 
@@ -49,7 +45,7 @@ class EventsHomeFragment : Fragment() {
 
     private fun setupAdapter() {
         with(binding.rvListEvents) {
-            layoutManager = LinearLayoutManager(context)
+            layoutManager = LinearLayoutManager(requireContext())
             adapter = adapterEvents
             itemAnimator = DefaultItemAnimator()
             setHasFixedSize(true)

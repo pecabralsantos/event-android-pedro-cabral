@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TextCardDate">
+        <item name="android:fontFamily">@font/ubuntu_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/ruby_red</item>
+    </style>
+
+    <style name="TextCardTitle">
+        <item name="android:fontFamily">@font/ubuntu_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="TextCardLocation">
+        <item name="android:fontFamily">@font/ubuntu_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/lava_gray</item>
+    </style>
+
+</resources>
