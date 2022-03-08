@@ -12,14 +12,17 @@ class EventsHomeViewModel(
     private val eventsRepository: EventsRepository
 ) : ViewModel() {
 
+    val loading: MutableLiveData<Boolean> = MutableLiveData(true)
     val listEvents: MutableLiveData<List<Event>> = MutableLiveData()
 
     fun getAllEvents() {
         viewModelScope.launch {
             val response = eventsRepository.getAllEvents()
             if (response.isSuccessful) {
+                loading.value = false
                 listEvents.value = response.body()
             } else {
+                loading.value = false
                 Log.e("ERROR", response.message())
             }
         }

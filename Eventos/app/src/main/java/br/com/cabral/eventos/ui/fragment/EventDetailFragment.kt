@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import br.com.cabral.eventos.R
 import br.com.cabral.eventos.databinding.FragmentEventDetailBinding
 import br.com.cabral.eventos.model.Event
@@ -38,12 +39,31 @@ class EventDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setupListeners()
         setupObservers()
 
         viewModel.getEvent(idEvent)
     }
 
+    private fun setupListeners() {
+        binding.include.ivBtnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
+    }
+
     private fun setupObservers() {
+        viewModel.loading.observe(viewLifecycleOwner) {
+            if (it) {
+                binding.progressBar.visibility = View.VISIBLE
+                binding.constraintLayout.visibility = View.GONE
+                binding.btnCheckIn.visibility = View.GONE
+            } else {
+                binding.progressBar.visibility = View.GONE
+                binding.constraintLayout.visibility = View.VISIBLE
+                binding.btnCheckIn.visibility = View.VISIBLE
+            }
+        }
+
         viewModel.event.observe(viewLifecycleOwner) {
             configEventDetails(it)
         }

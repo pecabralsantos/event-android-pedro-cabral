@@ -38,6 +38,11 @@ class EventsHomeFragment : Fragment() {
     }
 
     private fun setupObservers() {
+        viewModel.loading.observe(viewLifecycleOwner) {
+            if (!it) binding.progressBar.visibility = View.GONE
+            else binding.rvListEvents.visibility = View.VISIBLE
+        }
+
         viewModel.listEvents.observe(viewLifecycleOwner) {
             adapterEvents.update(it)
         }

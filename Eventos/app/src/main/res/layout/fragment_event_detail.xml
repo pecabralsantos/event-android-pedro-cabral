@@ -8,6 +8,10 @@
         android:layout_height="match_parent"
         tools:context=".ui.fragment.EventDetailFragment">
 
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar_detail" />
+
         <ScrollView
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -15,11 +19,14 @@
             app:layout_constraintBottom_toTopOf="@+id/btn_check_in"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/include">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                tools:visibility="visible">
 
                 <ImageView
                     android:id="@+id/iv_detail_img"
@@ -33,6 +40,7 @@
 
                 <TextView
                     android:id="@+id/txt_detail_title"
+                    style="@style/TextTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -60,10 +68,11 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+                        app:srcCompat="@drawable/ic_calendar" />
 
                     <TextView
                         android:id="@+id/txt_detail_date"
+                        style="@style/TextDetailItem"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -92,10 +101,11 @@
                         android:layout_height="wrap_content"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:srcCompat="@android:drawable/ic_menu_my_calendar" />
+                        app:srcCompat="@drawable/ic_money" />
 
                     <TextView
                         android:id="@+id/txt_detail_price"
+                        style="@style/TextDetailItem"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -114,13 +124,14 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="32dp"
                     android:layout_marginEnd="16dp"
-                    android:background="?android:attr/listDivider"
+                    android:background="@color/colorSecondaryInverse"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/cl_price" />
 
                 <TextView
                     android:id="@+id/txt_subtitle"
+                    style="@style/TextSubTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -131,6 +142,7 @@
 
                 <TextView
                     android:id="@+id/txt_detail_description"
+                    style="@style/TextBody"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -147,14 +159,28 @@
 
         <Button
             android:id="@+id/btn_check_in"
+            style="@style/TextToolbar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:text="Realizar Check-in"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:visibility="visible" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
