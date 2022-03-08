@@ -8,25 +8,29 @@ import java.util.Locale
 
 class Formats {
 
-    private var locale = Locale("pt", "BR")
-    private val formatDayMonthSimplified = SimpleDateFormat("EEE',' MMM dd '─' HH:mm", locale)
-    private val formatDayMonthExtensive = SimpleDateFormat("EEEE',' MMMM dd 'às' HH:mm", locale)
-    private val formatMoney = NumberFormat.getCurrencyInstance(locale)
+    companion object {
 
-    private fun typeConversion(time: Long?) = time?.let { Date(it) } ?: run { "" }
+        private var locale = Locale("pt", "BR")
+        private val formatDayMonthSimplified = SimpleDateFormat("EEE',' MMM dd '─' HH:mm", locale)
+        private val formatDayMonthExtensive = SimpleDateFormat("EEEE',' MMMM dd 'às' HH:mm", locale)
+        private val formatMoney = NumberFormat.getCurrencyInstance(locale)
 
-    fun longToDateSimplified(time: Long?): String {
-        val date = typeConversion(time)
-        return formatDayMonthSimplified.format(date)
-    }
+        private fun typeConversion(time: Long?) = time?.let { Date(it) } ?: run { "" }
 
-    fun longToDateExtensive(time: Long?): String {
-        val date = typeConversion(time)
-        return formatDayMonthExtensive.format(date)
-    }
+        fun longToDateSimplified(time: Long?): String {
+            val date = typeConversion(time)
+            return formatDayMonthSimplified.format(date)
+        }
 
-    fun money(value: BigDecimal?): String {
-        return value?.let { formatMoney.format(it.toDouble()) } ?: run { "" }
+        fun longToDateExtensive(time: Long?): String {
+            val date = typeConversion(time)
+            return formatDayMonthExtensive.format(date)
+        }
+
+        fun money(value: BigDecimal?): String {
+            return value?.let { formatMoney.format(it.toDouble()) } ?: run { "" }
+        }
+
     }
 
 }

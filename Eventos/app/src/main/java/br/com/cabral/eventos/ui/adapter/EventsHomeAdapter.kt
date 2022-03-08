@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import br.com.cabral.eventos.R
 import br.com.cabral.eventos.databinding.ItemCardHomeBinding
 import br.com.cabral.eventos.model.Event
-import br.com.cabral.eventos.ui.fragment.EventDetailFragment.Companion.ID_SELECTED_EVENT
+import br.com.cabral.eventos.ui.util.Constants.Companion.ID_SELECTED_EVENT
 import br.com.cabral.eventos.ui.util.Formats
 import com.squareup.picasso.Picasso
 
@@ -31,7 +31,7 @@ class EventsHomeAdapter : RecyclerView.Adapter<EventsHomeAdapter.ViewHolder>() {
             .error(R.drawable.ic_empty_image)
             .into(holder.binding.ivEvent)
 
-        holder.binding.txtEventDate.text = Formats().longToDateSimplified(listEvents[position].date)
+        holder.binding.txtEventDate.text = Formats.longToDateSimplified(listEvents[position].date)
         holder.binding.txtEventTitle.text = listEvents[position].title
 
         holder.binding.cvEvent.setOnClickListener {

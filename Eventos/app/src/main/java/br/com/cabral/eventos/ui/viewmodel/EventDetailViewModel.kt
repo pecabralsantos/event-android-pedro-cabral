@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.cabral.eventos.model.CheckIn
 import br.com.cabral.eventos.model.Event
 import br.com.cabral.eventos.repository.EventsRepository
 import kotlinx.coroutines.launch
@@ -21,6 +22,18 @@ class EventDetailViewModel(
             if (response.isSuccessful) {
                 loading.value = false
                 event.value = response.body()
+            } else {
+                loading.value = false
+                Log.e("ERROR", response.message())
+            }
+        }
+    }
+
+    fun setCheckIn(checkIn: CheckIn) {
+        viewModelScope.launch {
+            val response = eventsRepository.setCheckIn(checkIn)
+            if (response.isSuccessful) {
+                loading.value = false
             } else {
                 loading.value = false
                 Log.e("ERROR", response.message())
