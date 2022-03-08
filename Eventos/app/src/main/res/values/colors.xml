@@ -6,4 +6,6 @@
     <color name="colorSecondary">#ff625b71</color>
     <color name="colorSecondaryContainer">#ff1d192b</color>
     <color name="colorSecondaryInverse">#ffe8def8</color>
+
+    <color name="transparent">#00ffffff</color>
 </resources>
