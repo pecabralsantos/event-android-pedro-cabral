@@ -8,6 +8,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <include
+            android:id="@+id/include"
+            layout="@layout/toolbar_home" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_list_events"
             android:layout_width="0dp"
@@ -15,7 +19,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/include"
             tools:listitem="@layout/item_card_home"
             tools:visibility="visible" />
 

@@ -5,4 +5,13 @@
     <string name="check_in_made_title">Check-in realizado com sucesso.</string>
     <string name="check_in_made_msg">Fique atento ao horario do evento. Cuide-se e boa diversão!</string>
     <string name="button_ok">OK</string>
+    <string name="name">Nome</string>
+    <string name="email">E-mail</string>
+    <string name="warning_about_reservation">Para poder realizar a reserva deste evento, por gentileza informe os dados solicitados.</string>
+    <string name="button_check_in">Check-in</string>
+    <string name="button_cancel">Cancelar</string>
+    <string name="information_subtitle">Informações</string>
+    <string name="button_do_check">Realizar Check-in</string>
+    <string name="about_event">Sobre o Evento</string>
+    <string name="our_events">Nossos eventos</string>
 </resources>
