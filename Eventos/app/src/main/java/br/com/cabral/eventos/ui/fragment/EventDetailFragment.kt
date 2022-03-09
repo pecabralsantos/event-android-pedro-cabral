@@ -15,6 +15,7 @@ import br.com.cabral.eventos.ui.util.Constants.Companion.DIALOG_FRAGMENT_BUNDLE_
 import br.com.cabral.eventos.ui.util.Constants.Companion.DIALOG_FRAGMENT_BUNDLE_NAME
 import br.com.cabral.eventos.ui.util.Constants.Companion.DIALOG_FRAGMENT_KEY
 import br.com.cabral.eventos.ui.util.Constants.Companion.ID_SELECTED_EVENT
+import br.com.cabral.eventos.ui.util.DialogUtils
 import br.com.cabral.eventos.ui.util.Formats
 import br.com.cabral.eventos.ui.viewmodel.EventDetailViewModel
 import com.squareup.picasso.Picasso
@@ -81,6 +82,17 @@ class EventDetailFragment : Fragment() {
                     email = email
                 )
                 viewModel.setCheckIn(checkIn)
+            }
+        }
+
+        viewModel.postSuccess.observe(viewLifecycleOwner) {
+            if (it) DialogUtils.alert(
+                requireContext(),
+                R.string.check_in_made_title,
+                R.string.check_in_made_msg
+            ) { dialog, _ ->
+                viewModel.postSuccess.value = false
+                dialog.dismiss()
             }
         }
     }
