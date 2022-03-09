@@ -14,6 +14,7 @@ class EventsHomeViewModel(
 
     val loading: MutableLiveData<Boolean> = MutableLiveData(true)
     val listEvents: MutableLiveData<List<Event>> = MutableLiveData()
+    val postError: MutableLiveData<Boolean> = MutableLiveData(false)
 
     fun getAllEvents() {
         viewModelScope.launch {
@@ -23,6 +24,7 @@ class EventsHomeViewModel(
                 listEvents.value = response.body()
             } else {
                 loading.value = false
+                postError.value = true
                 Log.e("ERROR", response.message())
             }
         }

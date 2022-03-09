@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Eventos</string>
+    <string name="call_error_title">Tivemos um problema!</string>
+    <string name="call_error_msg">Não possível comunicar com o servidor. Por favor, tente novamente!</string>
     <string name="check_in_made_title">Check-in realizado com sucesso.</string>
     <string name="check_in_made_msg">Fique atento ao horario do evento. Cuide-se e boa diversão!</string>
     <string name="button_ok">OK</string>

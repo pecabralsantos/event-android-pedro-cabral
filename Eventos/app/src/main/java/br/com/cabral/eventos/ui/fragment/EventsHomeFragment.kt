@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.cabral.eventos.databinding.FragmentEventsHomeBinding
 import br.com.cabral.eventos.ui.adapter.EventsHomeAdapter
+import br.com.cabral.eventos.ui.util.DialogUtils
 import br.com.cabral.eventos.ui.viewmodel.EventsHomeViewModel
 import org.koin.android.ext.android.inject
 
@@ -45,6 +46,15 @@ class EventsHomeFragment : Fragment() {
 
         viewModel.listEvents.observe(viewLifecycleOwner) {
             adapterEvents.update(it)
+        }
+
+        viewModel.postError.observe(viewLifecycleOwner) {
+            if (it) DialogUtils.alert(
+                requireContext()
+            ) { dialog, _ ->
+                viewModel.postError.value = false
+                dialog.dismiss()
+            }
         }
     }
 

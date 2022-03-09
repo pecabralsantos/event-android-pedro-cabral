@@ -95,6 +95,15 @@ class EventDetailFragment : Fragment() {
                 dialog.dismiss()
             }
         }
+
+        viewModel.postError.observe(viewLifecycleOwner) {
+            if (it) DialogUtils.alert(
+                requireContext()
+            ) { dialog, _ ->
+                viewModel.postError.value = false
+                dialog.dismiss()
+            }
+        }
     }
 
     private fun configEventDetails(detail: Event?) {

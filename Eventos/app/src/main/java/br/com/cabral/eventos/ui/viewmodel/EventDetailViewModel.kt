@@ -16,6 +16,7 @@ class EventDetailViewModel(
     val loading: MutableLiveData<Boolean> = MutableLiveData(true)
     val event: MutableLiveData<Event> = MutableLiveData()
     val postSuccess: MutableLiveData<Boolean> = MutableLiveData(false)
+    val postError: MutableLiveData<Boolean> = MutableLiveData(false)
 
     fun getEvent(id: String) {
         viewModelScope.launch {
@@ -25,6 +26,7 @@ class EventDetailViewModel(
                 event.value = response.body()
             } else {
                 loading.value = false
+                postError.value = true
                 Log.e("ERROR", response.message())
             }
         }
@@ -39,6 +41,7 @@ class EventDetailViewModel(
                 postSuccess.value = true
             } else {
                 loading.value = false
+                postError.value = true
                 Log.e("ERROR", response.message())
             }
         }
